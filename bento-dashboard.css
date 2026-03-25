@@ -1,0 +1,107 @@
+/* --- MODERN BENTO UI & DASHBOARD OVERRIDES --- */
+
+/* Sidebar Overhaul */
+.sidebar {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* Top Bar Overhaul */
+.top-bar {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+}
+
+/* Bento Layout Core - Mobile First */
+#dynamicContent {
+    padding: 20px;
+    animation: fadeIn 0.4s ease-out;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    grid-auto-flow: dense;
+    width: 100%;
+}
+
+.bento-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Critical for overflow prevention in flex/grid */
+    overflow: hidden;
+    /* Strict overflow prevention per card */
+    word-break: break-word;
+    /* Prevent long words from breaking layout */
+    overflow-wrap: break-word;
+}
+
+/* --- RESPONSIVE GRID UTILITIES --- */
+/* Default: 1 column on mobile */
+.colspan-1,
+.colspan-2,
+.colspan-full {
+    grid-column: span 1;
+}
+
+/* Progressive Enhancement Upgrades */
+@media(min-width: 768px) {
+    #dynamicContent {
+        padding: 30px;
+    }
+
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .bento-card {
+        padding: 24px;
+    }
+
+    .bento-card h3 {
+        font-size: 2rem;
+    }
+
+    .colspan-2 {
+        grid-column: span 2;
+    }
+
+    .colspan-full {
+        grid-column: 1 / -1;
+    }
+}
+
+@media(min-width: 1200px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .colspan-1 {
+        grid-column: span 1;
+    }
+
+    .colspan-2 {
+        grid-column: span 2;
+    }
+
+    .colspan-full {
+        grid-column: 1 / -1;
+    }
+}
